@@ -1,6 +1,4 @@
 const { Plugin, Notice, TFile } = require('obsidian');
-
-// Import all our modular components
 const { DEFAULT_SETTINGS } = require('./config/constants');
 const LLMService = require('./services/llm-service');
 const MetadataService = require('./services/metadata-service');
@@ -13,9 +11,6 @@ const PaperModal = require('./ui/paper-modal');
 const RASettingTab = require('./ui/settings-tab');
 const { generatePdfFileName } = require('./utils/formatters');
 
-/**
- * Main plugin class for the Research Assistant
- */
 class ResearchAssistantPlugin extends Plugin {
     constructor() {
         super(...arguments);
@@ -29,13 +24,8 @@ class ResearchAssistantPlugin extends Plugin {
         this.registerViews();
         this.registerCommands();
         this.addSettingTab(new RASettingTab(this.app, this));
-        
-        console.log('Research Assistant plugin loaded.');
     }
 
-    /**
-     * Initialize all service instances
-     */
     initializeServices() {
         this.llmService = new LLMService(this.settings);
         this.metadataService = new MetadataService();
@@ -44,9 +34,6 @@ class ResearchAssistantPlugin extends Plugin {
         this.paperService = new PaperService(this.app, this.settings, this.fileService, this.pdfService);
     }
 
-    /**
-     * Set up event handlers for file system changes
-     */
     setupEventHandlers() {
         this.app.workspace.onLayoutReady(async () => {
             await this.paperService.buildPaperIndex();
@@ -57,9 +44,6 @@ class ResearchAssistantPlugin extends Plugin {
         });
     }
 
-    /**
-     * Register views and ribbon icons
-     */
     registerViews() {
         this.registerView(
             PAPER_EXPLORER_VIEW_TYPE,
@@ -80,9 +64,6 @@ class ResearchAssistantPlugin extends Plugin {
         });
     }
 
-    /**
-     * Register plugin commands
-     */
     registerCommands() {
         this.addCommand({
             id: 'add-research-paper',
@@ -119,7 +100,6 @@ class ResearchAssistantPlugin extends Plugin {
                     await this.paperService.cleanAllResumes();
                     await this.rebuildAndRefresh();
                 } catch (err) {
-                    console.error('Error cleaning resume sections:', err);
                     new Notice('Failed to clean resume sections: ' + (err && err.message ? err.message : String(err)));
                 }
             }
@@ -153,10 +133,6 @@ class ResearchAssistantPlugin extends Plugin {
             callback: () => this.activateChatView()
         });
     }
-
-    // ======================================================
-    // FILE EVENT HANDLERS
-    // ======================================================
 
     async handleFileCreate(file) {
         if (file instanceof TFile && this.paperService.isPaperFile(file)) {
@@ -197,49 +173,30 @@ class ResearchAssistantPlugin extends Plugin {
             }
         }
     }
-
-    // ======================================================
-    // MAIN OPERATIONS
-    // ======================================================
-
-    /**
-     * Process new paper from URL
-     * @param {string} url - Paper URL
-     * @param {string} sector - Research sector
-     */
     async processNewPaper(url, sector) {
         try {
             new Notice('Fetching paper data...');
-            
             const metadata = await this.metadataService.getMetadataFromUrl(url);
             const useSector = sector || this.settings.defaultSector || 'Other';
             const pdfFileName = generatePdfFileName(metadata);
-            
+
             const pdfLogicalPath = await this.fileService.downloadPdf(metadata, useSector, pdfFileName);
             await this.fileService.createPaperNote(metadata, useSector, pdfLogicalPath);
-            
+
             new Notice(`Successfully added '${metadata.title}'!`);
             this.activateView();
             this.paperService.scheduleRebuild(150, () => this.rebuildAndRefresh());
         } catch (error) {
-            console.error(error);
             new Notice(`Error: ${error.message}`, 10000);
         }
     }
 
-    /**
-     * Delete paper and refresh index
-     * @param {TFile} noteFile - Note file to delete
-     */
     async deletePaper(noteFile) {
         const paperData = this.paperService.paperIndex.get(noteFile.path);
         await this.fileService.deletePaper(noteFile, paperData);
         this.paperService.scheduleRebuild(150, () => this.rebuildAndRefresh());
     }
 
-    /**
-     * Test LLM API configuration
-     */
     async testLLMApi() {
         try {
             new Notice('Testing LLM API configuration...');
@@ -247,113 +204,134 @@ class ResearchAssistantPlugin extends Plugin {
             new Notice('✅ LLM API test successful!');
         } catch (error) {
             new Notice(`❌ LLM API test failed: ${error.message}`);
-            console.error('LLM API test error:', error);
         }
     }
 
-    /**
-     * Generate resume for currently active note
-     */
     async generateResumeForCurrentNote() {
         try {
             const activeFile = this.app.workspace.getActiveFile();
-            if (!activeFile || activeFile.extension !== 'md') {
-                new Notice('No active markdown file found.');
+            if (!activeFile) {
+                new Notice('No active file found.');
+                return;
+            }
+
+            // If the active file is a PDF, extract text and write resume to a sidecar note in the same folder
+            if (activeFile.extension === 'pdf') {
+                new Notice('Generating resume for current PDF...');
+                let pdfText = '';
+                try {
+                    pdfText = await this.pdfService.extractTextFromPdf(activeFile);
+                } catch (e) {
+                    new Notice('❌ Failed to extract PDF text: ' + (e?.message || String(e)));
+                    return;
+                }
+
+                const resume = await this.llmService.getSummary(pdfText);
+
+                // Find or create a sidecar note with same basename
+                const folderPath = activeFile.parent?.path || '';
+                const mdPath = `${folderPath}/${activeFile.basename}.md`;
+                let noteFile = this.app.vault.getAbstractFileByPath(mdPath);
+                if (!(noteFile instanceof TFile)) {
+                    await this.app.vault.create(mdPath, `---\nTitle: "${activeFile.basename}"\n---\n\n## Paper PDF\n![[${activeFile.path}]]\n`);
+                    noteFile = this.app.vault.getAbstractFileByPath(mdPath);
+                }
+                if (!(noteFile instanceof TFile)) {
+                    new Notice('❌ Could not create or open sidecar note for PDF.');
+                    return;
+                }
+                await this.insertResumeIntoNote(noteFile, resume);
+                new Notice(`✅ Resume generated for PDF '${activeFile.basename}' and saved to '${noteFile.basename}.md'!`);
+                return;
+            }
+
+            // Active Markdown file flow
+            if (activeFile.extension !== 'md') {
+                new Notice('Active file is not a markdown note or PDF.');
                 return;
             }
 
             new Notice('Generating resume for current note...');
 
-            // Read the current note content
             const noteContent = await this.app.vault.read(activeFile);
             let contentToSummarize = noteContent;
 
-            // Check if there's an associated PDF file
             const paperData = this.paperService.paperIndex.get(activeFile.path);
-            if (paperData && paperData.frontmatter && paperData.frontmatter.pdf_link) {
+            // Use pdf_file field with path resolution, not pdf_link
+            if (paperData && paperData.frontmatter && paperData.frontmatter.pdf_file) {
                 try {
-                    // Try to find and read the PDF file
-                    const pdfFile = this.app.vault.getAbstractFileByPath(paperData.frontmatter.pdf_link);
+                    let logicalPath = String(paperData.frontmatter.pdf_file);
+                    if (!logicalPath.includes('/') && activeFile.parent && activeFile.parent.path) {
+                        logicalPath = `${activeFile.parent.path}/${logicalPath}`;
+                    }
+                    const effectivePath = await this.fileService.resolveLogicalToEffectivePath(logicalPath);
+                    const pdfFile = this.app.vault.getAbstractFileByPath(effectivePath);
                     if (pdfFile instanceof TFile && pdfFile.extension === 'pdf') {
                         new Notice('Found associated PDF, extracting text...');
                         const pdfText = await this.pdfService.extractTextFromPdf(pdfFile);
                         contentToSummarize = `Note Content:\n${noteContent}\n\n--- Associated PDF Content ---\n${pdfText}`;
                     }
                 } catch (pdfError) {
-                    console.warn('Could not extract PDF content:', pdfError);
                     new Notice('Using note content only (PDF extraction failed)');
                 }
             }
 
-            // Generate the resume using LLM service
             const resume = await this.llmService.getSummary(contentToSummarize);
 
-            // Insert the resume into the note
             await this.insertResumeIntoNote(activeFile, resume);
 
             new Notice(`✅ Resume generated for '${activeFile.basename}'!`);
         } catch (error) {
-            console.error('Error generating resume for current note:', error);
             new Notice(`❌ Failed to generate resume: ${error.message}`, 8000);
         }
     }
 
-    /**
-     * Insert resume into note, replacing existing resume if present
-     * @param {TFile} noteFile - The note file
-     * @param {string} resume - The generated resume
-     */
     async insertResumeIntoNote(noteFile, resume) {
         const content = await this.app.vault.read(noteFile);
-        
-        // Check if there's already a resume section
-        const resumeStartRegex = /^## Resume$/m;
-        const resumeEndRegex = /^## /m;
-        
+
+        // Be flexible: match headings like "# Resume", "## Resume:", "### Résumé", or "## Summary"
+        const resumeStartRegex = /^#{1,6}\s+(?:Resume|Résumé|Summary)\s*:?\s*$/im;
+        // Next section starts at any markdown heading line
+        const nextHeadingRegex = /^#{1,6}\s+/m;
+
         const startMatch = content.match(resumeStartRegex);
         if (startMatch) {
-            // Find the end of the resume section
-            const startIndex = startMatch.index + startMatch[0].length;
-            const remainingContent = content.slice(startIndex);
-            const endMatch = remainingContent.match(resumeEndRegex);
-            
-            let newContent;
-            if (endMatch) {
-                // Replace existing resume section
-                const endIndex = startIndex + endMatch.index;
-                newContent = content.slice(0, startMatch.index) + 
-                           `## Resume\n\n${resume}\n\n` + 
-                           content.slice(endIndex);
-            } else {
-                // Resume section goes to end of file
-                newContent = content.slice(0, startMatch.index) + 
-                           `## Resume\n\n${resume}\n`;
-            }
-            
+            const startOfHeading = startMatch.index;
+            const endOfHeadingLine = startMatch.index + startMatch[0].length;
+
+            const remainingContent = content.slice(endOfHeadingLine);
+            const endMatch = remainingContent.match(nextHeadingRegex);
+
+            const endIndex = endMatch ? (endOfHeadingLine + endMatch.index) : content.length;
+
+            // Preserve embedded PDFs within the original Resume section
+            const sectionBody = content.slice(endOfHeadingLine, endIndex);
+            const embedRegex = /!\[\[[^\]]*\.pdf[^\]]*\]\]/ig;
+            const embeds = sectionBody.match(embedRegex) || [];
+            const embedsBlock = embeds.length ? embeds.join("\n") + "\n\n" : "";
+
+            const replacement = `## Resume\n\n${resume}\n\n${embedsBlock}`;
+
+            const newContent = content.slice(0, startOfHeading) + replacement + content.slice(endIndex);
+
             await this.app.vault.modify(noteFile, newContent);
         } else {
-            // No existing resume section, add at the end
-            const newContent = content + `\n\n## Resume\n\n${resume}\n`;
+            // Ensure a blank line before appending when needed
+            const needsLeadingNewline = content.length > 0 && !content.endsWith("\n\n");
+            const prefix = needsLeadingNewline ? (content.endsWith("\n") ? "\n" : "\n\n") : "";
+            const newContent = content + `${prefix}## Resume\n\n${resume}\n`;
             await this.app.vault.modify(noteFile, newContent);
         }
     }
 
-    // ======================================================
-    // UI OPERATIONS
-    // ======================================================
+    
 
-    /**
-     * Open the add paper modal
-     */
     openAddPaperModal() {
         new PaperModal(this.app, this, async (url, sector) => {
             return await this.processNewPaper(url, sector);
         }).open();
     }
 
-    /**
-     * Activate the paper explorer view
-     */
     async activateView() {
         const { workspace } = this.app;
         let leaf = workspace.getLeavesOfType(PAPER_EXPLORER_VIEW_TYPE)[0];
@@ -368,9 +346,6 @@ class ResearchAssistantPlugin extends Plugin {
         workspace.revealLeaf(leaf);
     }
 
-    /**
-     * Activate the chat panel view
-     */
     async activateChatView() {
         const { workspace } = this.app;
         let leaf = workspace.getLeavesOfType(CHAT_PANEL_VIEW_TYPE)[0];
@@ -385,9 +360,6 @@ class ResearchAssistantPlugin extends Plugin {
         workspace.revealLeaf(leaf);
     }
 
-    /**
-     * Refresh paper explorer view
-     */
     refreshPaperExplorerView() {
         const leaves = this.app.workspace.getLeavesOfType(PAPER_EXPLORER_VIEW_TYPE);
         leaves.forEach(leaf => {
@@ -397,9 +369,6 @@ class ResearchAssistantPlugin extends Plugin {
         });
     }
 
-    /**
-     * Open master index in main view
-     */
     async openMasterIndexInMainView() {
         const indexPath = `_papers_index.md`;
         await this.fileService.ensureFolderExists(this.settings.pdfDownloadFolder);
@@ -415,13 +384,8 @@ class ResearchAssistantPlugin extends Plugin {
         }
     }
 
-    // ======================================================
     // INDEX MANAGEMENT
-    // ======================================================
 
-    /**
-     * Complete rebuild and refresh pipeline
-     */
     async rebuildAndRefresh() {
         await this.paperService.buildPaperIndex();
         await this.fileService.cleanEmptySectorFolders();
@@ -429,17 +393,12 @@ class ResearchAssistantPlugin extends Plugin {
         await this.refreshAllArtifacts();
     }
 
-    /**
-     * Refresh all UI artifacts
-     */
     async refreshAllArtifacts() {
         this.refreshPaperExplorerView();
         await this.paperService.updateMasterIndex();
     }
 
-    // ======================================================
     // SETTINGS
-    // ======================================================
 
     async loadSettings() {
         this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
@@ -447,7 +406,6 @@ class ResearchAssistantPlugin extends Plugin {
 
     async saveSettings() {
         await this.saveData(this.settings);
-        // Update services when settings change
         if (this.llmService) {
             this.llmService.settings = this.settings;
         }
@@ -463,7 +421,6 @@ class ResearchAssistantPlugin extends Plugin {
         if (this.paperService) {
             this.paperService.paperIndex.clear();
         }
-        console.log('Research Assistant plugin unloaded.');
     }
 }
 

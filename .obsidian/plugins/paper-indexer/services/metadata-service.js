@@ -1,25 +1,12 @@
 const { requestUrl } = require('obsidian');
 
-/**
- * Service for handling paper metadata fetching and parsing
- */
 class MetadataService {
-    /**
-     * Extract arXiv ID from URL
-     * @param {string} url - arXiv URL
-     * @returns {string|null} Extracted arXiv ID
-     */
     extractArxivId(url) {
         const regex = /arxiv\.org\/(?:abs|pdf|html)\/(\d{4}\.\d{4,5}(?:v\d+)?|[a-zA-Z\-\.]+\/\d{7})/;
         const match = url.match(regex);
         return match ? match[1] : null;
     }
 
-    /**
-     * Check if URL is a direct PDF link
-     * @param {string} url - URL to check
-     * @returns {boolean} True if direct PDF URL
-     */
     isDirectPdfUrl(url) {
         try {
             const u = new URL(url);
@@ -29,17 +16,12 @@ class MetadataService {
         }
     }
 
-    /**
-     * Build metadata from direct PDF URL
-     * @param {string} url - Direct PDF URL
-     * @returns {Object} Metadata object
-     */
     async buildMetadataFromDirectPdf(url) {
         let fileNamePart = url.split('?')[0].split('#')[0].split('/').pop() || 'Untitled Paper';
         fileNamePart = decodeURIComponent(fileNamePart).replace(/\.pdf$/i, '');
         const cleanedTitle = fileNamePart.replace(/[\-_]+/g, ' ').replace(/\s+/g, ' ').trim();
         const today = new Date().toISOString().split('T')[0];
-        
+
         return {
             id: cleanedTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''),
             title: cleanedTitle || 'Untitled Paper',
@@ -50,15 +32,10 @@ class MetadataService {
         };
     }
 
-    /**
-     * Fetch paper metadata from arXiv API
-     * @param {string} arxivId - arXiv paper ID
-     * @returns {Object} Paper metadata
-     */
     async fetchArxivMetadata(arxivId) {
         const apiUrl = `http://export.arxiv.org/api/query?id_list=${arxivId}`;
         const response = await requestUrl({ url: apiUrl });
-        
+
         if (response.status !== 200) {
             throw new Error('Failed to fetch from arXiv API.');
         }
@@ -67,7 +44,7 @@ class MetadataService {
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, "text/xml");
         const entry = xmlDoc.querySelector("entry");
-        
+
         if (!entry) {
             throw new Error('Paper not found on arXiv.');
         }
@@ -87,14 +64,9 @@ class MetadataService {
         };
     }
 
-    /**
-     * Get metadata from URL (either arXiv or direct PDF)
-     * @param {string} url - Paper URL
-     * @returns {Object} Paper metadata
-     */
     async getMetadataFromUrl(url) {
         const isPdf = this.isDirectPdfUrl(url);
-        
+
         if (isPdf) {
             return await this.buildMetadataFromDirectPdf(url);
         } else {

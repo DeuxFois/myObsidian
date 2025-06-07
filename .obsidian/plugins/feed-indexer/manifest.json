@@ -1,0 +1,10 @@
+{
+  "id": "feed-indexer",
+  "name": "Feed Indexer",
+  "version": "0.1.0",
+  "minAppVersion": "0.12.0",
+  "description": "Add feeds by URL and extract article content using heuristics or local WebLLM.",
+  "author": "AFAAIT",
+  "authorUrl": "",
+  "isDesktopOnly": false
+}

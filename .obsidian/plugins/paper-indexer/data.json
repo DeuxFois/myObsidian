@@ -1,22 +1,14 @@
 {
   "summaryApiEndpoint": "",
   "summaryApiModel": "",
-  "summaryApiKey": "",
+  "summaryApiKey": "nan",
   "pdfDownloadFolder": "_research-papers",
   "hideFolderFromFiles": false,
   "sectors": [],
-  "defaultSector": "LLM",
+  "defaultSector": "",
   "maxPdfCharactersForResume": 20000000,
-  "chatConversations": {
-    "_papers_index.md": {
-      "history": [],
-      "userMessageHistory": [],
-      "lastUpdated": "2025-09-15T22:11:02.810Z"
-    },
-    "kanban.md": {
-      "history": [],
-      "userMessageHistory": [],
-      "lastUpdated": "2025-09-15T22:11:00.808Z"
-    }
-  }
+  "chatConversations": {},
+  "discussions": {},
+  "globalDiscussionHistory": [
+  ]
 }

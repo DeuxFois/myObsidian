@@ -82,7 +82,6 @@ class RASettingTab extends PluginSettingTab {
         
         const availableSectors = await this.plugin.paperService.getAvailableSectors();
 
-        // Ensure the configured defaultSector is valid
         if (!availableSectors.includes(this.plugin.settings.defaultSector)) {
             const fallback = availableSectors.includes('Other') ? 'Other' : (availableSectors[0] || 'Other');
             this.plugin.settings.defaultSector = fallback;
@@ -125,7 +124,7 @@ class RASettingTab extends PluginSettingTab {
                 setting.setDesc("Discovered from folder");
             }
 
-            if (isManaged && sector !== 'Other') { // Prevent removing 'Other'
+            if (isManaged && sector !== 'Other') {
                 setting.addButton(button => {
                     button.setButtonText('Remove').onClick(async () => {
                         this.plugin.settings.sectors = this.plugin.settings.sectors.filter(s => s !== sector);
@@ -153,7 +152,6 @@ class RASettingTab extends PluginSettingTab {
                         const value = text.getValue().trim();
                         if (value && !this.plugin.settings.sectors.includes(value)) {
                             this.plugin.settings.sectors.push(value);
-                            // Automatically create the folder for the new sector
                             await this.plugin.fileService.ensureFolderExists(`${this.plugin.settings.pdfDownloadFolder}/${value}`);
                             await this.plugin.saveSettings();
                             text.setValue('');

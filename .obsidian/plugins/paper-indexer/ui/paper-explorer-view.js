@@ -1,6 +1,5 @@
 const { ItemView, TFile } = require('obsidian');
 
-// Define a unique identifier for our new view
 const PAPER_EXPLORER_VIEW_TYPE = "paper-explorer-view";
 
 class PaperExplorerView extends ItemView {
@@ -23,14 +22,12 @@ class PaperExplorerView extends ItemView {
     }
 
     async onOpen() {
-        // Ensure index and artifacts are up-to-date when view opens
         try {
-            // If plugin hasn't built the index yet, trigger a quick rebuild
             if (!this.plugin || !this.plugin.paperService.paperIndex || this.plugin.paperService.paperIndex.size === 0) {
                 await this.plugin.rebuildAndRefresh();
             }
         } catch (e) {
-            console.warn('Error rebuilding paper index on open:', e);
+            // ignore
         }
         this.renderView();
     }
