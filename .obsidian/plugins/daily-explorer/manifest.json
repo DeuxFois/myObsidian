@@ -1,0 +1,10 @@
+{
+  "id": "daily-explorer",
+  "name": "Daily Notes Explorer",
+  "version": "0.1.0",
+  "minAppVersion": "1.5.0",
+  "description": "Left sidebar explorer listing daily notes with a delete button for each.",
+  "author": "GitHub Copilot",
+  "authorUrl": "https://github.com/",
+  "isDesktopOnly": false
+}

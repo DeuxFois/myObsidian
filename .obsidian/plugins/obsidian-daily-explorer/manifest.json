@@ -1,0 +1,25 @@
+{
+  "id": "obsidian-daily-explorer",
+  "name": "Obsidian Daily Explorer",
+  "version": "1.0.0",
+  "description": "A plugin for exploring daily notes in a sidebar with a delete option.",
+  "author": "Your Name",
+  "main": "main.ts",
+  "minAppVersion": "0.12.0",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.0.0"
+  },
+  "engines": {
+    "obsidian": ">=0.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/obsidian-daily-explorer.git"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,8 @@
+{
+  "newLinkFormat": "absolute",
+  "newFileLocation": "current",
+  "attachmentFolderPath": "_images",
+  "showUnsupportedFiles": false,
+  "promptDelete": false,
+  "alwaysUpdateLinks": true
+}

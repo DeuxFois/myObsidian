@@ -1,0 +1,15 @@
+.daily-explorer-list { padding: 8px; }
+.daily-explorer-row { display:flex; justify-content:space-between; align-items:center; padding:4px 0; }
+.daily-explorer-link { color: var(--text-normal); text-decoration: none; cursor: pointer; }
+.daily-explorer-delete { background: var(--danger-500); color: white; border: none; padding: 2px 6px; border-radius: 4px; cursor: pointer; }
+.daily-explorer-empty { color: var(--text-muted); padding: 8px; }
+.daily-explorer-add { 
+    background: var(--interactive-accent); 
+    color: white; 
+    border: none; 
+    padding: 8px 12px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    width: 100%;
+    margin-bottom: 8px;
+}

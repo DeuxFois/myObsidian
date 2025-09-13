@@ -1,0 +1,16 @@
+{
+  "pinnedNotes": [
+    {
+      "id": "4550f561-5206-4011-8661-1688c65b1dfe",
+      "icon": "square-kanban",
+      "path": "kanban",
+      "title": "kanban"
+    },
+    {
+      "id": "9758d92c-d402-4227-a7d0-aa67adc459a6",
+      "icon": "calendar-range",
+      "path": "Viewer",
+      "title": "Daily notes"
+    }
+  ]
+}

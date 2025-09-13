@@ -1,0 +1,9 @@
+{
+  "summaryApiEndpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "summaryApiModel": "google/gemini-2.5-flash-lite-preview-06-17",
+  "summaryApiKey": "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",
+  "pdfDownloadFolder": "_research-papers",
+  "hideFolderFromFiles": false,
+  "sectors": [],
+  "defaultSector": "Other"
+}

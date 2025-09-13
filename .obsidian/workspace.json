@@ -1,0 +1,196 @@
+{
+  "main": {
+    "id": "a550748438eee33f",
+    "type": "split",
+    "children": [
+      {
+        "id": "9e53fc41fffd1b60",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e4b473ce4706151d",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "95799299c62c3e8e",
+    "type": "split",
+    "children": [
+      {
+        "id": "cbd75a8975dbb0e9",
+        "type": "tabs",
+        "dimension": 67.63527054108216,
+        "children": [
+          {
+            "id": "dcf6e4a93314d172",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "8f00db9221323312",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "f99a3b20ddbe71dc",
+        "type": "tabs",
+        "dimension": 32.364729458917836,
+        "children": [
+          {
+            "id": "d1f94dae82f79c9b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "_papers_index.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of _papers_index"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 221.5
+  },
+  "right": {
+    "id": "63c8eda909e54d4c",
+    "type": "split",
+    "children": [
+      {
+        "id": "904160618197364d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8688fe5884d9b6e2",
+            "type": "leaf",
+            "state": {
+              "type": "paper-explorer-view",
+              "state": {},
+              "icon": "library",
+              "title": "Research Papers"
+            }
+          },
+          {
+            "id": "96f7b04c558f845b",
+            "type": "leaf",
+            "state": {
+              "type": "daily-explorer",
+              "state": {},
+              "icon": "calendar-range",
+              "title": "Daily Notes"
+            }
+          },
+          {
+            "id": "50c78ca3b1a02151",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 377.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "research-assistant:Open Paper Explorer": false,
+      "cmdr:Files: Show file explorer": false,
+      "daily-explorer:Daily Notes Explorer": false,
+      "switcher:Open quick switcher": true,
+      "command-palette:Open command palette": true,
+      "obsidian-kanban:Create new board": true,
+      "daily-notes:Open today's daily note": true,
+      "pinned-notes:Daily notes": true,
+      "obsidian-daily-notes-viewer:Open Viewer": true,
+      "pinned-notes:kanban": false,
+      "ribbon-divider:ribbon-divider-aba486e4-28d6-4a77-bdcc-3993a9cc5c64": true,
+      "ribbon-divider:ribbon-divider-108e842b-94fc-429d-8999-d48fabfc70eb": false,
+      "obsidian-git:Open Git source control": false,
+      "theme-toggle:Toggle to light mode": false
+    }
+  },
+  "active": "8f00db9221323312",
+  "lastOpenFiles": [
+    "README.md",
+    "_papers_index.md",
+    "_research-papers",
+    "_daily_notes/2025-09-14.md",
+    "_daily_index.md",
+    "_daily_notes",
+    "Viewer.md",
+    "daily_index.md",
+    "_index.md",
+    "_research-papers/Other/A New DAPO Algorithm for Stock Trading.md",
+    "_research-papers/Other/Ruijian Zha et al. - 2025 - A New DAPO Algorithm for Stock Trading.pdf",
+    "_research-papers/Other",
+    "_daily_notes/2025-09-12.md",
+    "_research-papers/LLM/Chain-of-Alpha- Unleashing the Power of Large Language Models for Alpha Mining in Quantitative Trading.md",
+    "kanban.md",
+    "_research-papers/RL/A New DAPO Algorithm for Stock Trading.md",
+    "_research-papers/LLM/Alex Kim Financial Statement Analysis with Large Language Models 2024 6.md",
+    "_research-papers/LLM/TradingAgents- Multi-Agents LLM Financial Trading Framework.md",
+    "research-papers",
+    "_daily_notes/_index.md",
+    "_research-papers/LLM/Lang Cao et al. - 2025 - Chain-of-Alpha- Unleashing the Power of Large Language Models for Alpha Mining in Quantitative Tradi.pdf",
+    "_research-papers/LLM/Yijia Xiao et al. - 2024 - TradingAgents- Multi-Agents LLM Financial Trading Framework.pdf",
+    "research-papers/Other/TradingAgents- Multi-Agents LLM Financial Trading Framework.md",
+    "research-papers/Other/Yijia Xiao et al. - 2024 - TradingAgents- Multi-Agents LLM Financial Trading Framework.pdf",
+    "research-papers/Other",
+    "research-papers/RL/Yijia Xiao et al. - 2024 - TradingAgents- Multi-Agents LLM Financial Trading Framework.pdf",
+    "research-papers/RL/TradingAgents- Multi-Agents LLM Financial Trading Framework.md",
+    "research-papers/Other/A New DAPO Algorithm for Stock Trading.md",
+    "_daily_notes/2025-09-13.md",
+    "_daily_notes/2025-09-1.md",
+    "research-papers/za/Chain-of-Alpha- Unleashing the Power of Large Language Models for Alpha Mining in Quantitative Trading.md",
+    "2025-09-13.md",
+    "202509130122.md",
+    "202509130121.md",
+    "research-papers/Other/index.md",
+    "research-papers/Other/2025-09-12-secure-multiparty.md",
+    "Untitled.canvas",
+    "Untitled 1.canvas"
+  ]
+}
