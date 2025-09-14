@@ -157,6 +157,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "homepage:Open homepage": true,
       "cmdr:Files: Show file explorer": false,
       "research-assistant:Open Paper Explorer": false,
       "daily-explorer:Daily Notes Explorer": false,
