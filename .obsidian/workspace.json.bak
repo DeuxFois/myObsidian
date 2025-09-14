@@ -157,7 +157,6 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "homepage:Open homepage": false,
       "cmdr:Files: Show file explorer": false,
       "research-assistant:Open Paper Explorer": false,
       "daily-explorer:Daily Notes Explorer": false,
@@ -181,12 +180,12 @@
   },
   "active": "d502a13f54d23d77",
   "lastOpenFiles": [
-    "kanban.md",
     "peers/strat.ninja.md",
     "peers/hypocritical.md",
     "learn/usefull_links.md",
     "learn/Freqtrade Stuff/Backtesting Traps.md",
     "learn/Freqtrade Stuff/Why TheForce Strategy Doesn't Work.md",
+    "kanban.md",
     "_papers_index.md",
     "_daily_index.md",
     "projects/freqRAG.md",
@@ -213,7 +212,7 @@
     "learn/botacademy/General_Linux/How_to_create_new_sudo-enabled_user.md",
     "learn/botacademy/General_Linux/Create,_modify_and_delete_swapfile_on_Ubuntu.md",
     "learn/botacademy/Freqtrade_Strategy_for_Dummies/Quick_Freqtrade_Tutorial_for_Beginners.md",
-    "learn/botacademy/General/Thanks_Freqtrade!!!_I’m_quitting_my_job_right_now!!!.md",
+    "learn/botacademy/General/Thanks_Freqtrade!!!_I'm_quitting_my_job_right_now!!!.md",
     "learn/botacademy/General_Linux/images",
     "learn/botacademy/General_Linux",
     "learn/botacademy/Strategy_Treasure/images",

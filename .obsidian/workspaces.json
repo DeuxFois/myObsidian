@@ -1,4 +1,204 @@
 {
-  "workspaces": {},
-  "active": "a"
+  "workspaces": {
+    "myObsidian": {
+      "main": {
+        "id": "a550748438eee33f",
+        "type": "split",
+        "children": [
+          {
+            "id": "d61ad7258e4481ab",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "d502a13f54d23d77",
+                "type": "leaf",
+                "state": {
+                  "type": "kanban",
+                  "state": {
+                    "file": "kanban.md",
+                    "kanbanViewState": {
+                      "kanban-plugin": "board",
+                      "list-collapse": [
+                        false,
+                        false,
+                        false
+                      ]
+                    }
+                  },
+                  "icon": "lucide-trello",
+                  "title": "kanban"
+                }
+              },
+              {
+                "id": "0d711273ba018103",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "peers/strat.ninja.md",
+                    "mode": "source",
+                    "source": false,
+                    "backlinks": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "strat.ninja"
+                }
+              }
+            ],
+            "currentTab": 1
+          }
+        ],
+        "direction": "vertical"
+      },
+      "left": {
+        "id": "95799299c62c3e8e",
+        "type": "split",
+        "children": [
+          {
+            "id": "cbd75a8975dbb0e9",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "dcf6e4a93314d172",
+                "type": "leaf",
+                "state": {
+                  "type": "search",
+                  "state": {
+                    "query": "",
+                    "matchingCase": false,
+                    "explainSearch": false,
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical"
+                  },
+                  "icon": "lucide-search",
+                  "title": "Search"
+                }
+              },
+              {
+                "id": "8f00db9221323312",
+                "type": "leaf",
+                "state": {
+                  "type": "file-explorer",
+                  "state": {
+                    "sortOrder": "alphabetical",
+                    "autoReveal": false
+                  },
+                  "icon": "lucide-folder-closed",
+                  "title": "Files"
+                }
+              },
+              {
+                "id": "8688fe5884d9b6e2",
+                "type": "leaf",
+                "state": {
+                  "type": "paper-explorer-view",
+                  "state": {},
+                  "icon": "library",
+                  "title": "Research Papers"
+                }
+              },
+              {
+                "id": "96f7b04c558f845b",
+                "type": "leaf",
+                "state": {
+                  "type": "daily-explorer",
+                  "state": {},
+                  "icon": "calendar-range",
+                  "title": "Daily Notes"
+                }
+              }
+            ],
+            "currentTab": 1
+          }
+        ],
+        "direction": "horizontal",
+        "width": 312.5
+      },
+      "right": {
+        "id": "63c8eda909e54d4c",
+        "type": "split",
+        "children": [
+          {
+            "id": "904160618197364d",
+            "type": "tabs",
+            "dimension": 65.09615384615385,
+            "children": [
+              {
+                "id": "50c78ca3b1a02151",
+                "type": "leaf",
+                "state": {
+                  "type": "git-view",
+                  "state": {},
+                  "icon": "git-pull-request",
+                  "title": "Source Control"
+                }
+              },
+              {
+                "id": "d1f94dae82f79c9b",
+                "type": "leaf",
+                "state": {
+                  "type": "outline",
+                  "state": {
+                    "file": "peers/strat.ninja.md",
+                    "followCursor": false,
+                    "showSearch": false,
+                    "searchQuery": ""
+                  },
+                  "icon": "lucide-list",
+                  "title": "Outline of strat.ninja"
+                }
+              }
+            ],
+            "currentTab": 1
+          },
+          {
+            "id": "0a8b0dd0cb455984",
+            "type": "tabs",
+            "dimension": 34.90384615384615,
+            "children": [
+              {
+                "id": "cd0b1e2fd1d92326",
+                "type": "leaf",
+                "state": {
+                  "type": "highlights-sidebar",
+                  "state": {},
+                  "icon": "highlighter",
+                  "title": "Highlights"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal",
+        "width": 413.5
+      },
+      "left-ribbon": {
+        "hiddenItems": {
+          "cmdr:Files: Show file explorer": false,
+          "research-assistant:Open Paper Explorer": false,
+          "daily-explorer:Daily Notes Explorer": false,
+          "switcher:Open quick switcher": true,
+          "command-palette:Open command palette": true,
+          "obsidian-kanban:Create new board": true,
+          "daily-notes:Open today's daily note": true,
+          "pinned-notes:Daily notes": true,
+          "obsidian-daily-notes-viewer:Open Viewer": true,
+          "pinned-notes:kanban": false,
+          "ribbon-divider:ribbon-divider-aba486e4-28d6-4a77-bdcc-3993a9cc5c64": true,
+          "ribbon-divider:ribbon-divider-108e842b-94fc-429d-8999-d48fabfc70eb": false,
+          "obsidian-git:Open Git source control": false,
+          "pdf-plus:PDF++: Toggle auto-copy": false,
+          "pdf-plus:PDF++: Toggle auto-focus": false,
+          "pdf-plus:PDF++: Toggle auto-paste": false,
+          "theme-toggle:Toggle to light mode": false,
+          "workspaces:Manage workspace layouts": true,
+          "sidebar-highlights:Open highlights": true
+        }
+      },
+      "active": "0d711273ba018103",
+      "mtime": "2025-09-14T21:24:48+02:00"
+    }
+  },
+  "active": "myObsidian"
 }
