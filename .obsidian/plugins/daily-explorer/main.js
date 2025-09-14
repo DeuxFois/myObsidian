@@ -168,7 +168,7 @@ module.exports = class DailyExplorerPlugin extends Plugin {
       await this.activateView();
 
       // Then open daily_index from the vault when the ribbon icon is clicked.
-      const viewerPath = '_daily_index';
+      const viewerPath = '_daily_index.md';
       let file = this.app.vault.getAbstractFileByPath(viewerPath);
       if (!file) {
         // create an empty daily_index if it doesn't exist

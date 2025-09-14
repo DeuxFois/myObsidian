@@ -53,6 +53,20 @@
         "type": "FILES",
         "pattern": "kanban.md",
         "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "_papers_index.md",
+        "patternType": "STRICT"
+      },
+      {
+        "name": "",
+        "active": true,
+        "type": "FILES",
+        "pattern": "_daily_index.md",
+        "patternType": "STRICT"
       }
     ],
     "frontMatter": [

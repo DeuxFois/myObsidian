@@ -701,8 +701,9 @@ class ResearchAssistantPlugin extends Plugin {
             }
             const useSector = sector || this.settings.defaultSector || 'Other';
             const pdfFileName = this.generatePdfFileName(metadata);
-            await this.downloadPdf(metadata, useSector, pdfFileName);
-            await this.createPaperNote(metadata, useSector, pdfFileName);
+            // downloadPdf will write into <pdfDownloadFolder>/pdf/<sector>/ and return the logical vault path
+            const pdfLogicalPath = await this.downloadPdf(metadata, useSector, pdfFileName);
+            await this.createPaperNote(metadata, useSector, pdfLogicalPath);
             new Notice(`Successfully added '${metadata.title}'!`);
             this.activateView();
             this.scheduleRebuild(150); // quick refresh after adding
@@ -782,12 +783,17 @@ class ResearchAssistantPlugin extends Plugin {
             return;
         }
         const year = new Date(metadata.published).getFullYear();
+        // pdfFileName may be either a filename or a logical path like '<base>/pdf/<sector>/file.pdf'
+        let pdfLogicalPath = pdfFileName;
+        if (!pdfLogicalPath.includes('/')) {
+            pdfLogicalPath = `${this.settings.pdfDownloadFolder}/pdf/${sector}/${pdfFileName}`;
+        }
         const markdownContent = `---
 title: "${metadata.title.replace(/"/g, '\\"')}"
 authors: "${metadata.authors.replace(/"/g, '\\"')}"
 year: ${year}
 published: "${metadata.published}"
-pdf_file: "${pdfFileName}"
+pdf_file: "${pdfLogicalPath}"
 tags: [paper, to-read]
 ---
 # ${metadata.title}
@@ -799,10 +805,12 @@ tags: [paper, to-read]
 | **Date** | ${metadata.published} |
 | **Abstract**| ${metadata.summary} |
 
+**PDF link**: [pdf link](${pdfLogicalPath})
+
 ---
 
 ## Paper PDF
-![[${pdfFileName}]]
+![[${pdfLogicalPath}]]
 `;
         await this.app.vault.create(notePath, markdownContent);
     } 
@@ -816,17 +824,22 @@ tags: [paper, to-read]
 
     async downloadPdf(metadata, sector, fileName) {
          if (!metadata.pdfLink) throw new Error('No PDF link found.');
-        const targetFolder = `${this.settings.pdfDownloadFolder}/${sector}`;
+        // Store PDFs under a dedicated pdf/ subfolder inside the base research folder
+        const pdfBase = `${this.settings.pdfDownloadFolder}/pdf`;
+        const targetFolder = sector ? `${pdfBase}/${sector}` : pdfBase;
         await this.ensureFolderExists(targetFolder);
         const targetEffective = this.getEffectiveFolderPath(targetFolder);
         const filePath = `${targetEffective}/${fileName}`;
+        // If already exists, return the logical path
         if (await this.app.vault.adapter.exists(filePath)) {
             new Notice(`PDF "${fileName}" already exists.`, 5000);
-            return;
+            return `${pdfBase}/${sector}/${fileName}`.replace(/\\/g, '/');
         }
-        const pdfResponse = await requestUrl({ url: metadata.pdfLink });
-        if (pdfResponse.status !== 200) throw new Error('Failed to download PDF.');
-        await this.app.vault.createBinary(filePath, pdfResponse.arrayBuffer);
+        const pdfResponse = await requestUrl({ url: metadata.pdfLink, method: 'GET', throw: false });
+        if (!pdfResponse || (typeof pdfResponse.status === 'number' && pdfResponse.status !== 200)) throw new Error('Failed to download PDF.');
+    await this.app.vault.createBinary(filePath, pdfResponse.arrayBuffer);
+    // Return logical vault path (not necessarily the effective dot-prefixed path)
+    return `${pdfBase}/${sector}/${fileName}`.replace(/\\/g, '/');
     }
 
     async ensureFolderExists(folderPath) {
@@ -878,8 +891,13 @@ tags: [paper, to-read]
         if (!confirm(confirmMessage)) return;
         try {
             if (pdfFileName) {
-                const pdfPath = `${noteFile.parent.path}/${pdfFileName}`;
-                const pdfFile = this.app.vault.getAbstractFileByPath(pdfPath);
+                // pdf_file may be a logical path (e.g. '_research-papers/pdf/LLM/file.pdf')
+                let pdfLogical = pdfFileName;
+                if (!pdfLogical.includes('/')) {
+                    pdfLogical = `${noteFile.parent.path}/${pdfLogical}`;
+                }
+                const pdfEffective = this.getEffectiveFolderPath(pdfLogical);
+                const pdfFile = this.app.vault.getAbstractFileByPath(pdfEffective);
                 if (pdfFile) {
                     await this.app.vault.delete(pdfFile);
                 }
@@ -916,14 +934,12 @@ tags: [paper, to-read]
                 const pdfFileName = fm.pdf_file;
                 let pdfCell = 'N/A';
                 if (pdfFileName) {
-                    // Build a wiki-style link that aliases the long filename to a short label like 'pdf link'
-                    // If the PDF is stored in the same sector folder as the note, reference it with folder path
-                    const sectorFolder = `${folderPath}/${paper.sector}`.replace(/\\/g, '/');
-                    const pdfPath = `${sectorFolder}/${pdfFileName}`.replace(/\\/g, '/');
-                    // Obsidian wiki link with alias: [[path/to/file.pdf|pdf link]]
-                   
+                    // pdf_file is stored as a logical path like '_research-papers/pdf/LLM/file.pdf' or similar
+                    const safePdf = String(pdfFileName).replace(/\\\\/g, '/');
+                    // Use markdown link for master index table
+                    pdfCell = `[pdf link](${safePdf})`;
                 }
-                indexContent += `| [[${paper.basename}]] | ${authors} | ${year} | ${displayTags}  |\n`;
+                indexContent += `| [[${paper.basename}]] | ${authors} | ${year} | ${displayTags} | ${pdfCell} |\n`;
             }
 
             indexContent += `\n`;

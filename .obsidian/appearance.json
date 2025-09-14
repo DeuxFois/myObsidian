@@ -1,5 +1,8 @@
 {
   "accentColor": "",
   "cssTheme": "Atom",
-  "theme": "obsidian"
+  "theme": "obsidian",
+  "enabledCssSnippets": [
+    "space-bulletList"
+  ]
 }

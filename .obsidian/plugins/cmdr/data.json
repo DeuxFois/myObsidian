@@ -20,7 +20,11 @@
   "explorer": [],
   "hide": {
     "statusbar": [],
-    "leftRibbon": []
+    "leftRibbon": [
+      "PDF++: Toggle auto-copy",
+      "PDF++: Toggle auto-focus",
+      "PDF++: Toggle auto-paste"
+    ]
   },
   "spacing": 8,
   "advancedToolbar": {
