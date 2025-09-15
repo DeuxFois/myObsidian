@@ -4,22 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "2f070ecc62651756",
+        "id": "c02b281e3626fbf3",
         "type": "tabs",
         "children": [
           {
-            "id": "16769865514e8de1",
+            "id": "218a43004260ca0f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_research-papers/RL/A New DAPO Algorithm for Stock Trading.md",
+                "file": "kanban.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "A New DAPO Algorithm for Stock Trading"
+              "title": "kanban"
             }
           }
         ]
@@ -34,7 +34,6 @@
       {
         "id": "cbd75a8975dbb0e9",
         "type": "tabs",
-        "dimension": 79.95991983967936,
         "children": [
           {
             "id": "dcf6e4a93314d172",
@@ -88,23 +87,6 @@
           }
         ],
         "currentTab": 1
-      },
-      {
-        "id": "4306115051055ef5",
-        "type": "tabs",
-        "dimension": 20.04008016032064,
-        "children": [
-          {
-            "id": "62898666b6222866",
-            "type": "leaf",
-            "state": {
-              "type": "comment-view",
-              "state": {},
-              "icon": "highlighter",
-              "title": "HiNote"
-            }
-          }
-        ]
       }
     ],
     "direction": "horizontal",
@@ -117,6 +99,7 @@
       {
         "id": "904160618197364d",
         "type": "tabs",
+        "dimension": 80.76923076923077,
         "children": [
           {
             "id": "50c78ca3b1a02151",
@@ -134,13 +117,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_research-papers/RL/A New DAPO Algorithm for Stock Trading.md",
+                "file": "kanban.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of A New DAPO Algorithm for Stock Trading"
+              "title": "Outline of kanban"
             }
           },
           {
@@ -154,7 +137,24 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
+      },
+      {
+        "id": "307ceaa68d0e1c33",
+        "type": "tabs",
+        "dimension": 19.230769230769234,
+        "children": [
+          {
+            "id": "62898666b6222866",
+            "type": "leaf",
+            "state": {
+              "type": "comment-view",
+              "state": {},
+              "icon": "highlighter",
+              "title": "HiNote"
+            }
+          }
+        ]
       }
     ],
     "direction": "horizontal",
@@ -182,52 +182,8 @@
       "research-assistant:Open Note Chat": false
     }
   },
-  "active": "16769865514e8de1",
+  "active": "8f00db9221323312",
   "lastOpenFiles": [
-    "_research-papers/LLM/TradingAgents- Multi-Agents LLM Financial Trading Framework.md",
-    "_research-papers/LLM/Alex Kim Financial Statement Analysis with Large Language Models 2024 6.md",
-    "_research-papers/LLM/Chain-of-Alpha- Unleashing the Power of Large Language Models for Alpha Mining in Quantitative Trading.md",
-    "_research-papers/pdf/LLM/Lang Cao et al. - 2025 - Chain-of-Alpha- Unleashing the Power of Large Language Models for Alpha Mining in Quantitative Tradi.pdf",
-    "kanban.md",
-    "_research-papers/RL/A New DAPO Algorithm for Stock Trading.md",
-    "_research-papers/LLM/Yijia Xiao et al. - 2024 - TradingAgents- Multi-Agents LLM Financial Trading Framework.pdf",
-    "_research-papers/LLM/Unknown et al. - 2025 - Alex Kim Financial Statement Analysis with Large Language Models 2024 6.pdf",
-    "_research-papers/LLM/Lang Cao et al. - 2025 - Chain-of-Alpha- Unleashing the Power of Large Language Models for Alpha Mining in Quantitative Tradi.pdf",
-    "_papers_index.md",
-    "_research-papers/pdf/LLM",
-    "_research-papers/pdf",
-    "_research-papers/LLM/Lang Cao et al. - 2025 - Chain-of-Alpha- Unleashing the Power of Large Language Models for Alpha Mining in Quantitative Tradi 1.pdf",
-    "index.html",
-    "id_ed25519.pub",
-    "_daily_index.md",
-    "learn/Freqtrade Stuff/Why TheForce Strategy Doesn't Work.md",
-    "learn/Freqtrade Stuff/Backtesting Traps.md",
-    "learn/botacademy/Backtest_Traps/Backtest_traps_-_ROI.md",
-    "learn/botacademy/Backtest_Traps/Backtest_traps_-_Custom_Exit.md",
-    "peers/hypocritical.md",
-    "peers/strat.ninja.md",
-    "projects/freqRAG.md",
-    "projects/LLMfreq.md",
-    "learn/usefull_links.md",
-    "projects/knowledge graph.md",
-    "_daily_notes/2025-09-14.md",
-    "_research-papers/Other/Chain-of-Alpha- Unleashing the Power of Large Language Models for Alpha Mining in Quantitative Trading.md",
-    "_research-papers/pdf/Other/Lang.md",
-    "learn/botacademy/Tutorial/Additional_Entries_Based_of_Dataframe_Value.md",
-    "learn/botacademy/Strategy_Treasure/ST_-_Kasuari_BTC.md",
-    "learn/botacademy/Misc/Why_volume_matters.md",
-    "learn/botacademy/Misc/Crossed_check_vs_simple_comparison.md",
-    "learn/botacademy/General_Linux/Install_Python_3.13_on_Ubuntu_24.0422.0420.0418.04.md",
-    "learn/botacademy/Frequently_Asked_Questions/images/bt.png",
-    "learn/botacademy/Misc/images/High-Win-Rate_20240824_141929_0000.png",
-    "learn/botacademy/Tutorial/images/candle-1024x436.jpg",
-    "learn/botacademy/Freqtrade_Strategy_for_Dummies/images/backtest-3-1024x98.png",
-    "learn/botacademy/Freqtrade_Strategy_for_Dummies/images/backtest-2.png",
-    "learn/botacademy/Freqtrade_Strategy_for_Dummies/images/backtest-1-1024x155.png",
-    "learn/botacademy/Backtest_Traps/images/image-2-1024x361.png",
-    "learn/botacademy/Backtest_Traps/images/image-1-1024x437.png",
-    "learn/botacademy/Backtest_Traps/images/image-1024x426.png",
-    "Untitled.canvas",
-    "Untitled 1.canvas"
+    "kanban.md"
   ]
 }

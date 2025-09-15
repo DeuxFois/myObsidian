@@ -8,25 +8,15 @@
   "defaultSector": "LLM",
   "maxPdfCharactersForResume": 20000000,
   "chatConversations": {
+    "_papers_index.md": {
+      "history": [],
+      "userMessageHistory": [],
+      "lastUpdated": "2025-09-15T22:11:02.810Z"
+    },
     "kanban.md": {
       "history": [],
       "userMessageHistory": [],
-      "lastUpdated": "2025-09-15T21:57:59.970Z"
-    },
-    "_research-papers/LLM/Chain-of-Alpha- Unleashing the Power of Large Language Models for Alpha Mining in Quantitative Trading.md": {
-      "history": [],
-      "userMessageHistory": [],
-      "lastUpdated": "2025-09-15T21:58:05.070Z"
-    },
-    "_research-papers/LLM/Alex Kim Financial Statement Analysis with Large Language Models 2024 6.md": {
-      "history": [],
-      "userMessageHistory": [],
-      "lastUpdated": "2025-09-15T21:58:07.257Z"
-    },
-    "_research-papers/LLM/TradingAgents- Multi-Agents LLM Financial Trading Framework.md": {
-      "history": [],
-      "userMessageHistory": [],
-      "lastUpdated": "2025-09-15T21:58:12.105Z"
+      "lastUpdated": "2025-09-15T22:11:00.808Z"
     }
   }
 }
