@@ -1,30 +1,25 @@
 {
   "main": {
-    "id": "a550748438eee33f",
+    "id": "5324373015726ba8",
     "type": "split",
     "children": [
       {
-        "id": "d61ad7258e4481ab",
+        "id": "1c9fbf3eaca51a83",
         "type": "tabs",
         "children": [
           {
-            "id": "d502a13f54d23d77",
+            "id": "fe732a28ecfc802a",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "kanban.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false
-                  ]
-                }
+                "file": "_research-papers/LLM/TradingAgents- Multi-Agents LLM Financial Trading Framework.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
               },
-              "icon": "lucide-trello",
-              "title": "kanban"
+              "icon": "lucide-file",
+              "title": "TradingAgents- Multi-Agents LLM Financial Trading Framework"
             }
           }
         ]
@@ -39,6 +34,7 @@
       {
         "id": "cbd75a8975dbb0e9",
         "type": "tabs",
+        "dimension": 79.95991983967936,
         "children": [
           {
             "id": "dcf6e4a93314d172",
@@ -92,10 +88,27 @@
           }
         ],
         "currentTab": 1
+      },
+      {
+        "id": "4306115051055ef5",
+        "type": "tabs",
+        "dimension": 20.04008016032064,
+        "children": [
+          {
+            "id": "62898666b6222866",
+            "type": "leaf",
+            "state": {
+              "type": "comment-view",
+              "state": {},
+              "icon": "highlighter",
+              "title": "HiNote"
+            }
+          }
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 312.5
+    "width": 510.5
   },
   "right": {
     "id": "63c8eda909e54d4c",
@@ -104,7 +117,6 @@
       {
         "id": "904160618197364d",
         "type": "tabs",
-        "dimension": 65.09615384615385,
         "children": [
           {
             "id": "50c78ca3b1a02151",
@@ -122,34 +134,27 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "kanban.md",
+                "file": "_research-papers/LLM/Alex Kim Financial Statement Analysis with Large Language Models 2024 6.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of kanban"
+              "title": "Outline of Alex Kim Financial Statement Analysis with Large Language Models 2024 6"
+            }
+          },
+          {
+            "id": "419fc419eb9f1116",
+            "type": "leaf",
+            "state": {
+              "type": "chat-panel-view",
+              "state": {},
+              "icon": "message-circle",
+              "title": "Note Chat"
             }
           }
         ],
-        "currentTab": 1
-      },
-      {
-        "id": "0a8b0dd0cb455984",
-        "type": "tabs",
-        "dimension": 34.90384615384615,
-        "children": [
-          {
-            "id": "cd0b1e2fd1d92326",
-            "type": "leaf",
-            "state": {
-              "type": "highlights-sidebar",
-              "state": {},
-              "icon": "highlighter",
-              "title": "Highlights"
-            }
-          }
-        ]
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -157,9 +162,9 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "research-assistant:Open Paper Explorer": false,
       "homepage:Open homepage": true,
       "cmdr:Files: Show file explorer": false,
-      "research-assistant:Open Paper Explorer": false,
       "daily-explorer:Daily Notes Explorer": false,
       "switcher:Open quick switcher": true,
       "command-palette:Open command palette": true,
@@ -171,62 +176,13 @@
       "ribbon-divider:ribbon-divider-aba486e4-28d6-4a77-bdcc-3993a9cc5c64": true,
       "ribbon-divider:ribbon-divider-108e842b-94fc-429d-8999-d48fabfc70eb": false,
       "obsidian-git:Open Git source control": false,
-      "pdf-plus:PDF++: Toggle auto-copy": false,
-      "pdf-plus:PDF++: Toggle auto-focus": false,
-      "pdf-plus:PDF++: Toggle auto-paste": false,
       "theme-toggle:Toggle to light mode": false,
       "workspaces:Manage workspace layouts": true,
-      "sidebar-highlights:Open highlights": true
+      "hi-note:HiNote": true,
+      "research-assistant:Open Note Chat": false
     }
   },
-  "active": "d502a13f54d23d77",
+  "active": "fe732a28ecfc802a",
   "lastOpenFiles": [
-    "peers/strat.ninja.md",
-    "peers/hypocritical.md",
-    "learn/usefull_links.md",
-    "learn/Freqtrade Stuff/Backtesting Traps.md",
-    "learn/Freqtrade Stuff/Why TheForce Strategy Doesn't Work.md",
-    "kanban.md",
-    "_papers_index.md",
-    "_daily_index.md",
-    "projects/freqRAG.md",
-    "projects/LLMfreq.md",
-    "projects/knowledge graph.md",
-    "_daily_notes/2025-09-14.md",
-    "_daily_notes",
-    "learn/Freqtrade Stuff",
-    "projects",
-    "_research-papers/LLM/Chain-of-Alpha- Unleashing the Power of Large Language Models for Alpha Mining in Quantitative Trading.md",
-    "_research-papers/Other/Chain-of-Alpha- Unleashing the Power of Large Language Models for Alpha Mining in Quantitative Trading.md",
-    "_research-papers/LLM/Lang Cao et al. - 2025 - Chain-of-Alpha- Unleashing the Power of Large Language Models for Alpha Mining in Quantitative Tradi 1.pdf",
-    "_research-papers/pdf/LLM",
-    "_research-papers/pdf/Other/Lang.md",
-    "_research-papers/pdf/Other",
-    "_research-papers/pdf",
-    "learn/botacademy/Tutorial/Additional_Entries_Based_of_Dataframe_Value.md",
-    "learn/botacademy/Strategy_Treasure/ST_-_Kasuari_BTC.md",
-    "learn/botacademy/Misc/Why_volume_matters.md",
-    "learn/botacademy/Misc/Crossed_check_vs_simple_comparison.md",
-    "learn/botacademy/General_Linux/Install_Python_3.13_on_Ubuntu_24.0422.0420.0418.04.md",
-    "learn/botacademy/General_Linux/Install_PHP8.4_and_modules_on_Ubuntu.md",
-    "learn/botacademy/General_Linux/How_to_install_docker-compose_on_Ubuntu.md",
-    "learn/botacademy/General_Linux/How_to_create_new_sudo-enabled_user.md",
-    "learn/botacademy/General_Linux/Create,_modify_and_delete_swapfile_on_Ubuntu.md",
-    "learn/botacademy/Freqtrade_Strategy_for_Dummies/Quick_Freqtrade_Tutorial_for_Beginners.md",
-    "learn/botacademy/General/Thanks_Freqtrade!!!_I'm_quitting_my_job_right_now!!!.md",
-    "learn/botacademy/General_Linux/images",
-    "learn/botacademy/General_Linux",
-    "learn/botacademy/Strategy_Treasure/images",
-    "learn/botacademy/Frequently_Asked_Questions/images/bt.png",
-    "learn/botacademy/Misc/images/High-Win-Rate_20240824_141929_0000.png",
-    "learn/botacademy/Tutorial/images/candle-1024x436.jpg",
-    "learn/botacademy/Freqtrade_Strategy_for_Dummies/images/backtest-3-1024x98.png",
-    "learn/botacademy/Freqtrade_Strategy_for_Dummies/images/backtest-2.png",
-    "learn/botacademy/Freqtrade_Strategy_for_Dummies/images/backtest-1-1024x155.png",
-    "learn/botacademy/Backtest_Traps/images/image-2-1024x361.png",
-    "learn/botacademy/Backtest_Traps/images/image-1-1024x437.png",
-    "learn/botacademy/Backtest_Traps/images/image-1024x426.png",
-    "Untitled.canvas",
-    "Untitled 1.canvas"
   ]
 }

@@ -1,0 +1,5 @@
+{
+  "autoRestoreOnStartup": false,
+  "showSuccessNotifications": true,
+  "createBackupBeforeRestore": false
+}

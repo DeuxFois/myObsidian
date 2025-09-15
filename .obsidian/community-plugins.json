@@ -9,17 +9,17 @@
   "theme-toggle",
   "ribbon-divider",
   "research-assistant",
-  "pinned-notes",
   "cmdr",
   "obsidian-daily-notes-viewer",
   "daily-explorer",
   "tweet-manager",
-  "file-explorer-plus",
   "double-switch",
-  "obsidian-zotero-desktop-connector",
-  "pdf-plus",
   "obsidian-emoji-toolbar",
-  "sidebar-highlights",
   "restore-workspace-plugin",
-  "homepage"
+  "homepage",
+  "0restore-workspace-plugin",
+  "pinned-notes",
+  "a0restore-workspace-plugin",
+  "file-explorer-plus",
+  "hi-note"
 ]

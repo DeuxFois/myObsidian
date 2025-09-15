@@ -1,0 +1,11 @@
+{
+	"id": "a0restore-workspace-plugin",
+	"name": "Restore Workspace",
+	"version": "2.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Automatically restores your workspace layout from a backup file when it gets overwritten by Obsidian. Includes auto-startup functionality and configurable settings.",
+	"author": "Custom Plugin",
+	"authorUrl": "",
+	"fundingUrl": "",
+	"isDesktopOnly": false
+}

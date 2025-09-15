@@ -1,15 +1,18 @@
 {
   "name": "paper-indexer",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.2.0",
+  "description": "Research Assistant / Paper Indexer for Obsidian",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node build/esbuild.mjs --watch",
+    "build": "node build/esbuild.mjs",
+    "analyze": "node build/esbuild.mjs --metafile"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
-    "obsidian": "^1.8.7",
-    "typescript": "^5.9.2"
+    "esbuild": "^0.24.2",
+    "typescript": "^5.5.0"
+  },
+  "dependencies": {
+    "obsidian": "^1.8.7"
   }
 }

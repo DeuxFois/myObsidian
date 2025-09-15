@@ -3,24 +3,7 @@
   "highlightColor": "#ffd700",
   "sidebarPosition": "right",
   "highlights": {
-    "kanban.md": [
-      {
-        "id": "l7stpnjie",
-        "text": " kanban:settings\n```\n{\"kanban-plugin\":\"board\",\"list-collapse\":[false,false,false,false,false,false]}\n```\n",
-        "tags": [],
-        "line": 32,
-        "startOffset": 162,
-        "endOffset": 271,
-        "filePath": "kanban.md",
-        "footnoteCount": 1,
-        "footnoteContents": [
-          " kanban:settings\n```\n{\"kanban-plugin\":\"board\",\"list-collapse\":[false,false,false,false,false,false]}\n```\n"
-        ],
-        "createdAt": 1757883113404,
-        "isNativeComment": true,
-        "type": "comment"
-      }
-    ]
+    "kanban.md": []
   },
   "collections": {},
   "groupingMode": "none",
